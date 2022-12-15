@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Categories } from "../const.js";
 import SignIn from "../pages/SignIn.jsx";
 
-function Header() {
+function Header(props) {
   const [activeSignIn, setSignInActive] = useState(false);
 
   return (
@@ -17,18 +18,23 @@ function Header() {
         </Link>
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li>
+            <Link to="/all-reviews" class="nav-link px-2 text-light">
+              {Categories.AllReviews}
+            </Link>
+          </li>
+          <li>
             <Link to="/movies" class="nav-link px-2 text-light">
-              Movies
+              {Categories.Movies}
             </Link>
           </li>
           <li>
             <Link to="/books" class="nav-link px-2 text-light">
-              Books
+              {Categories.Books}
             </Link>
           </li>
           <li>
             <Link to="/games" class="nav-link px-2 text-light">
-              Games
+              {Categories.Games}
             </Link>
           </li>
         </ul>

@@ -5,7 +5,7 @@ import GameReviewCard from "../components/ReviewCard/GameReviewCard";
 import { Categories } from "../const";
 import { mockData as data } from "../mock-data.js/mock-data";
 
-function Home() {
+function AllReviews() {
   return (
     <>
       <div>
@@ -42,4 +42,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default AllReviews;

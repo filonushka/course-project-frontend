@@ -15,10 +15,7 @@ function SignIn({ active, setActive }) {
           <div class="box-1 mt-md-0 mt-5">
             <h5 class="logo sign-in-logo">REVIEW HUNTER</h5>
 
-            <img
-              src="https://images.unsplash.com/photo-1458053688450-eef5d21d43b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80"
-              alt="auth page"
-            />
+            <img src="/img/auth-img.jpg" alt="auth page" />
           </div>
           <div class=" box-2 d-flex flex-column h-100">
             <div>
