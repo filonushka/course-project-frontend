@@ -121,6 +121,11 @@ a:hover {
     height: 100%;
   }
 
+  .btn,
+  .svg {
+    margin-right: 5px;
+  }
+
   .postcard__tagbox {
     display: flex;
     flex-flow: row wrap;

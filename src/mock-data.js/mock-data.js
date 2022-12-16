@@ -122,4 +122,122 @@ export const mockData = [
       },
     ],
   },
+  {
+    reviewId: "1aqw2rty3ret",
+    author: "Tommy",
+    productTitle: "Flowers for Algernon",
+    category: Categories.Books,
+    reviewTitle:
+      "an amazing journey that makes you take a step back and rethink things",
+    reviewImageUrl: "https://media.s-bol.com/DY9K0jOzlggk/wV6q0xg/550x836.jpg",
+    rating: 9,
+    grades: [
+      {
+        user: "Stanley",
+        userId: "1werwerf2wedf3",
+        grade: 4,
+      },
+      {
+        user: "Andrew",
+        userId: "1werwerf2wedf3",
+        grade: 4,
+      },
+      {
+        user: "Valerie",
+        userId: "1werwerf2wedf3",
+        grade: 5,
+      },
+      {
+        user: "Jimmy",
+        userId: "1werwerf2wedf3",
+        grade: 5,
+      },
+      {
+        user: "Xavier",
+        userId: "1werwerf2wedf3",
+        grade: 3,
+      },
+    ],
+    likes: ["Xavier", "Max", "Stanley", "Tommy", "Valerie", "Julia", "Anna"],
+    tags: ["awesome", "great", "intriguing"],
+    reviewExtract:
+      "Flowers for Algernon is a book that says to you: “I want you to question everything you know",
+    reviewContent: "Should be written",
+    comments: [
+      {
+        user: "Stanley",
+        userId: "1sdfsddfs2we6sdf",
+        comment: "",
+      },
+      {
+        user: "Andrew",
+        userId: "1sdfsddfs2we6sdf",
+        comment: "",
+      },
+      {
+        user: "Valerie",
+        userId: "1sdfsddfs2we6sdf",
+        comment: "",
+      },
+    ],
+  },
+  {
+    reviewId: "1aqw2rty3ret",
+    author: "Wild gamer",
+    productTitle: " Sonic Frontiers",
+    category: Categories.Games,
+    reviewTitle: "wild, weird and a bit broken",
+    reviewImageUrl:
+      "https://www.gameshub.com/wp-content/uploads/sites/5/2022/11/sonic-frontiers-review.jpg",
+    rating: 6,
+    grades: [
+      {
+        user: "Stanley",
+        userId: "1werwerf2wedf3",
+        grade: 4,
+      },
+      {
+        user: "Andrew",
+        userId: "1werwerf2wedf3",
+        grade: 4,
+      },
+      {
+        user: "Valerie",
+        userId: "1werwerf2wedf3",
+        grade: 5,
+      },
+      {
+        user: "Jimmy",
+        userId: "1werwerf2wedf3",
+        grade: 5,
+      },
+      {
+        user: "Xavier",
+        userId: "1werwerf2wedf3",
+        grade: 3,
+      },
+    ],
+    likes: ["Xavier", "Max", "Stanley", "Tommy", "Valerie", "Julia", "Anna"],
+    tags: ["awesome", "great", "intriguing"],
+    reviewExtract:
+      "The open-world adventure is brilliant in terms of input and response at the expense of any discernible logic",
+    reviewContent: "Should be written",
+    comments: [
+      {
+        user: "Stanley",
+        userId: "1sdfsddfs2we6sdf",
+        comment: "",
+      },
+      {
+        user: "Andrew",
+        userId: "1sdfsddfs2we6sdf",
+        comment: "",
+      },
+      {
+        user: "Valerie",
+        userId: "1sdfsddfs2we6sdf",
+        comment: "",
+      },
+    ],
+  },
 ];

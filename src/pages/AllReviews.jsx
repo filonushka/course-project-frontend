@@ -1,7 +1,5 @@
 import React from "react";
-import MovieReviewCard from "../components/ReviewCard/MovieReviewCard";
-import BookReviewCard from "../components/ReviewCard/BookReviewCard";
-import GameReviewCard from "../components/ReviewCard/GameReviewCard";
+import ReviewCard from "../components/ReviewCard/ReviewCard";
 import { Categories } from "../const";
 import { mockData as data } from "../mock-data.js/mock-data";
 
@@ -13,7 +11,7 @@ function AllReviews() {
           {Categories.Movies}
         </h1>
         {data.map((obj) => (
-          <MovieReviewCard
+          <ReviewCard
             reviewImageUrl={obj.reviewImageUrl}
             productTitle={obj.productTitle}
             reviewTitle={obj.reviewTitle}
@@ -23,6 +21,7 @@ function AllReviews() {
             rating={obj.rating}
             likes={obj.likes.length}
             tags={obj.tags}
+            grades={obj.grades}
           />
         ))}
       </div>
@@ -30,13 +29,11 @@ function AllReviews() {
         <h1 class="h1 text-center" id="pageHeaderTitle">
           {Categories.Books}
         </h1>
-        <BookReviewCard />
       </div>
       <div>
         <h1 class="h1 text-center" id="pageHeaderTitle">
           {Categories.Games}
         </h1>
-        <GameReviewCard />
       </div>
     </>
   );
