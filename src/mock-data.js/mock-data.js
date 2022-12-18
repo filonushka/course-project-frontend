@@ -1,11 +1,11 @@
-import { Categories } from "../const";
+import { filters } from "../const";
 
 export const mockData = [
   {
     reviewId: "1aqw2rty3ret",
     author: "Valeriya",
     productTitle: "Inside Man",
-    category: Categories.Movies,
+    category: filters.movies,
     reviewTitle: "A dark, gripping thriller which earns its secrecy",
     reviewImageUrl:
       "https://images.immediate.co.uk/production/volatile/sites/3/2021/03/395618-d4f5a43.jpg?quality=90&resize=980,654",
@@ -66,7 +66,7 @@ export const mockData = [
     reviewId: "1aqw2rty3ret",
     author: "Jimmy",
     productTitle: "Glass Onion: A Knives Out Mystery",
-    category: Categories.Movies,
+    category: filters.movies,
     reviewTitle: "It is bigger and better than the Original",
     reviewImageUrl:
       "https://static01.nyt.com/images/2022/11/24/multimedia/21glassonion1-1-f589/21glassonion1-1-f589-videoSixteenByNine3000.jpg",
@@ -126,7 +126,7 @@ export const mockData = [
     reviewId: "1aqw2rty3ret",
     author: "Tommy",
     productTitle: "Flowers for Algernon",
-    category: Categories.Books,
+    category: filters.books,
     reviewTitle:
       "an amazing journey that makes you take a step back and rethink things",
     reviewImageUrl: "https://media.s-bol.com/DY9K0jOzlggk/wV6q0xg/550x836.jpg",
@@ -185,7 +185,7 @@ export const mockData = [
     reviewId: "1aqw2rty3ret",
     author: "Wild gamer",
     productTitle: " Sonic Frontiers",
-    category: Categories.Games,
+    category: filters.games,
     reviewTitle: "wild, weird and a bit broken",
     reviewImageUrl:
       "https://www.gameshub.com/wp-content/uploads/sites/5/2022/11/sonic-frontiers-review.jpg",

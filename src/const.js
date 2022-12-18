@@ -1,14 +1,17 @@
-export const AppRoutes = {
-  Home: "/",
-  AllReviews: "/all-reviews",
-  Movies: "/movies",
-  Books: "/books",
-  Games: "/games",
+export const appRoutes = {
+  home: "/",
+  allReviews: "/all-reviews",
+  movies: "/movies",
+  books: "/books",
+  games: "/games",
 };
 
-export const Categories = {
-  AllReviews: "All Reviews",
-  Movies: "Movies & TV Series",
-  Books: "Books",
-  Games: "Games",
+// переименовать с маленькой буквы и назвать filters
+export const filters = {
+  allReviews: "All Reviews",
+  movies: "Movies & TV Series",
+  books: "Books",
+  games: "Games",
 };
+
+export const categories = ["movies", "books", "games"];

@@ -1,6 +1,6 @@
 import React from "react";
 import ReviewCard from "../components/ReviewCard/ReviewCard";
-import { Categories } from "../const";
+import { filters } from "../const";
 import { mockData as data } from "../mock-data.js/mock-data";
 
 function Home() {
@@ -8,7 +8,7 @@ function Home() {
     <>
       <div>
         <h1 class="h1 text-center" id="pageHeaderTitle">
-          {Categories.Movies}
+          {filters.Movies}
         </h1>
         {data.map((obj) => (
           <ReviewCard
@@ -27,7 +27,7 @@ function Home() {
       </div>
       <div>
         <h1 class="h1 text-center" id="pageHeaderTitle">
-          {Categories.Books}
+          {filters.Books}
         </h1>
         {data.map((obj) => (
           <ReviewCard
@@ -46,7 +46,7 @@ function Home() {
       </div>
       <div>
         <h1 class="h1 text-center" id="pageHeaderTitle">
-          {Categories.Games}
+          {filters.Games}
         </h1>
       </div>
     </>

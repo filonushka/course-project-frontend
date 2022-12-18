@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppRoutes, Categories } from "../const";
+import { appRoutes, filters } from "../const";
 
 function Footer() {
   return (
@@ -20,7 +20,7 @@ function Footer() {
           </span>
         </div>
         <Link
-          to={AppRoutes.Home}
+          to={appRoutes.home}
           class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
         >
           <h6 class="logo">REVIEW HUNTER</h6>
@@ -28,18 +28,18 @@ function Footer() {
 
         <ul class="nav col-md-4 justify-content-end">
           <li class="nav-item">
-            <Link to={AppRoutes.Movies} class="nav-link px-2 text-light">
-              {Categories.Movies}
+            <Link to={appRoutes.movies} class="nav-link px-2 text-light">
+              {filters.movies}
             </Link>
           </li>
           <li class="nav-item">
-            <Link to={AppRoutes.Books} class="nav-link px-2 text-light">
-              {Categories.Books}
+            <Link to={appRoutes.books} class="nav-link px-2 text-light">
+              {filters.books}
             </Link>
           </li>
           <li class="nav-item">
-            <Link to={AppRoutes.Games} class="nav-link px-2 text-light">
-              {Categories.Games}
+            <Link to={appRoutes.games} class="nav-link px-2 text-light">
+              {filters.games}
             </Link>
           </li>
         </ul>
