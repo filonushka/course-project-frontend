@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { filters } from "../../const";
 
 const initialState = {
-  selectedCategory: `${filters.books}`,
+  selectedCategory: `${filters.allReviews}`,
 };
 
 const filterCategorySlice = createSlice({
