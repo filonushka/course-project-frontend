@@ -1,8 +1,9 @@
 import React from "react";
-import "./ReviewCard.scss";
 import { getCountGrade } from "../../utils/utils";
-
 import { Link } from "react-router-dom";
+import { mockData as data } from "../../mock-data.js/mock-data";
+import StarGrade from "../GradeStars/StarGrade";
+import "./ReviewCard.scss";
 
 function MovieReviewCard(props) {
   return (
@@ -19,9 +20,17 @@ function MovieReviewCard(props) {
             </Link>
             <div class="postcard__text">
               <h1 class="postcard__title blue">
-                <Link to="/review-details">
-                  {props.productTitle}: {props.reviewTitle}
-                </Link>
+                {data.map(
+                  (obj) =>
+                    obj.productTitle === props.productTitle && (
+                      <Link
+                        key={obj.reviewId}
+                        to={`/review-details/${obj.reviewTitle}/${obj.reviewId}`}
+                      >
+                        {props.productTitle}: {props.reviewTitle}
+                      </Link>
+                    )
+                )}
               </h1>
               <div class="postcard__subtitle small">
                 <i class="fas fa-calendar-alt mr-2"></i>
@@ -30,11 +39,12 @@ function MovieReviewCard(props) {
               <div class="postcard__bar"></div>
               <div class="postcard__preview-txt">{props.reviewExtract}</div>
               <p>
-                Autor: <b>{props.author}</b>
+                Author: <b>{props.author}</b>
               </p>
               <p>
                 {getCountGrade(props.grades)}
-                <svg
+                <StarGrade />
+                {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -46,7 +56,7 @@ function MovieReviewCard(props) {
                     fill-rule="evenodd"
                     d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.178.178 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.178.178 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.178.178 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.178.178 0 0 1-.134-.098L8.16 4.1z"
                   ></path>
-                </svg>
+                </svg> */}
               </p>
               <p>
                 Rating: <b>{props.rating}/10</b>

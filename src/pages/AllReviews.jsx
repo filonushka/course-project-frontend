@@ -8,7 +8,6 @@ function AllReviews() {
   const selectedCategory = useSelector(
     (state) => state.filterCategory.selectedCategory
   );
-  console.log(selectedCategory);
   return (
     <ul class="justify-content-center">
       {categories.map(

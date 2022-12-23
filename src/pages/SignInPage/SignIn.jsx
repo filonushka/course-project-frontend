@@ -1,5 +1,5 @@
 import React from "react";
-import "./SignIn.css";
+import "./SignIn.scss";
 
 function SignIn({ active, setActive }) {
   return (
@@ -21,7 +21,25 @@ function SignIn({ active, setActive }) {
             <div>
               <p class="h-1">Create Account</p>
               <div class="d-flex flex-column align-items-center">
-                <p class="text-muted mb-2">Continue with...</p>
+                <div class="form-group">
+                  <label for="exampleDropdownFormEmail2"></label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleDropdownFormEmail2"
+                    placeholder="Email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleDropdownFormPassword2"></label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="exampleDropdownFormPassword2"
+                    placeholder="Password"
+                  />
+                </div>
+                <p class="text-muted mb-2 mt-2">or Continue with...</p>
                 <div class="d-flex align-items-center mt-2 mb-4 socials">
                   <button type="button" class="btn btn-outline-primary">
                     <svg

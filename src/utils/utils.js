@@ -4,6 +4,4 @@ export const getCountGrade = function (arr) {
   return averageGrade;
 };
 
-export const getCategory = function (obj) {
-  console.log("test");
-};
+export const toggleBtn = (setIsOpen) => setIsOpen((isOpen) => !isOpen);

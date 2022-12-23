@@ -4,6 +4,7 @@ export const appRoutes = {
   movies: "/movies",
   books: "/books",
   games: "/games",
+  profile: "/my-profile",
 };
 
 // переименовать с маленькой буквы и назвать filters

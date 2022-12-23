@@ -201,7 +201,7 @@ a:hover {
     }
 
     &:hover .postcard__img {
-      transform: scale(1.1);
+      // transform: scale(1.1);
     }
 
     &:nth-child(2n + 1) {
@@ -214,12 +214,12 @@ a:hover {
 
     &:nth-child(2n + 1) .postcard__text::before {
       left: -20px !important;
-      transform: rotate(4deg);
+      transform: rotate(2deg);
     }
 
     &:nth-child(2n + 0) .postcard__text::before {
       right: -12px !important;
-      transform: rotate(-4deg);
+      transform: rotate(-2deg);
     }
   }
 }
@@ -272,7 +272,7 @@ a:hover {
   background: $main-blue;
 }
 .blue .postcard__title:hover {
-  color: $main-blue;
+  color: #ffffff;
 }
 .blue .postcard__bar {
   background-color: $main-blue;
