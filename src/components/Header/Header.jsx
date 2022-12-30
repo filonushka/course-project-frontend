@@ -8,10 +8,12 @@ import SignIn from "../../pages/SignInPage/SignIn";
 import SignOut from "../../pages/SignOutPage/SignOut";
 
 import "./Header.scss";
+import CreateReviewModal from "../CreateReviewModal/CreateReviewModal.jsx";
 
 function Header(props) {
   const [activeSignIn, setSignInActive] = useState(false);
   const [activeSignOut, setSignOutActive] = useState(false);
+  const [activeCreateReview, setCreateReviewActive] = useState(false);
 
   const [isMyProfileOpen, setIsMyProfileOpen] = useState(false);
   const toggleMenu = () =>
@@ -133,7 +135,7 @@ function Header(props) {
                   data-popper-placement="bottom-end"
                 >
                   <li>
-                    <a class="dropdown-item text-warning" href="/">
+                    <button class="dropdown-item text-warning" href="/">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -145,10 +147,13 @@ function Header(props) {
                         <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"></path>
                       </svg>{" "}
                       My reviews
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a class="dropdown-item text-warning" href="/">
+                    <button
+                      class="dropdown-item text-warning"
+                      onClick={() => setCreateReviewActive(true)}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -164,10 +169,10 @@ function Header(props) {
                         ></path>
                       </svg>
                       Create new review
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a class="dropdown-item text-warning" href="/">
+                    <button class="dropdown-item text-warning" href="/">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -179,7 +184,7 @@ function Header(props) {
                         <path d="M4.5 9a3.5 3.5 0 1 0 0 7h7a3.5 3.5 0 1 0 0-7h-7zm7 6a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm-7-14a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm2.45 0A3.49 3.49 0 0 1 8 3.5 3.49 3.49 0 0 1 6.95 6h4.55a2.5 2.5 0 0 0 0-5H6.95zM4.5 0h7a3.5 3.5 0 1 1 0 7h-7a3.5 3.5 0 1 1 0-7z"></path>
                       </svg>
                       Settings
-                    </a>
+                    </button>
                   </li>
                 </ul>
               )}
@@ -215,6 +220,10 @@ function Header(props) {
       </header>
       <SignIn active={activeSignIn} setActive={setSignInActive} />
       <SignOut active={activeSignOut} setActive={setSignOutActive} />
+      <CreateReviewModal
+        active={activeCreateReview}
+        setActive={setCreateReviewActive}
+      />
     </div>
   );
 }

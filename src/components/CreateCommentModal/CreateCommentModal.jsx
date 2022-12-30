@@ -17,8 +17,8 @@ function CreateCommentModal({ active, setActive }) {
               <h2 class="postcard__title">Write a comment</h2>
               <div class="form-floating">
                 <textarea
-                  class="p-2 mb-3 rounded"
                   placeholder="Enter your comment here..."
+                  class="p-2 mb-3 rounded form-control-dark text-bg-dark"
                   id="floatingTextarea2"
                   style={{ height: "200px", width: "500px" }}
                 ></textarea>
@@ -33,7 +33,7 @@ function CreateCommentModal({ active, setActive }) {
                   Close
                 </button>
                 <input
-                  class="btn btn-warning btn-lg"
+                  class="btn btn-warning btn-lg "
                   type="submit"
                   value="Post comment"
                   onClick={() => setActive(false)}

@@ -40,14 +40,18 @@ function SignOut({ active, setActive }) {
 
               <div>
                 <p class="text-muted">Are you sure you want to log-off?</p>
-                <div class="btn btn-dark">
+                <button
+                  class="btn btn-dark"
+                  onClick={() => {
+                    setActive(false);
+                  }}
+                >
                   Sign Out<span class="fas fa-chevron-right"></span>
-                </div>
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <span class="fas fa-times" onClick={() => setActive(false)}></span>
       </div>
     </>
   );

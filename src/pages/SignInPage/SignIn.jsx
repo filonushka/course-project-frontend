@@ -80,9 +80,9 @@ function SignIn({ active, setActive }) {
                 </div>
                 <div>
                   <p class="text-muted">Already have an account?</p>
-                  <div class="btn btn-dark">
+                  <button class="btn btn-dark" onClick={() => setActive(false)}>
                     Log in<span class="fas fa-chevron-right"></span>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
