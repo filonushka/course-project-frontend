@@ -1,4 +1,7 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import AllReviews from "./pages/AllReviews";
@@ -10,8 +13,19 @@ import ReviewPage from "./pages/ReviewPage/ReviewPage";
 import MyProfile from "./pages/MyProfilePage/MyProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { appRoutes } from "./const";
+import SignIn from "./pages/SignInPage/SignIn";
+import Login from "./pages/LoginPage/Login";
+
+import { fetchAuthMe, selectIsAuth } from "./redux/slicers/auth";
 
 function App() {
+  const dispatch = useDispatch();
+  const isAuth = useSelector(selectIsAuth);
+
+  React.useEffect(() => {
+    dispatch(fetchAuthMe());
+  }, []);
+
   return (
     <div className="body">
       <div className="wrapper">
@@ -27,6 +41,8 @@ function App() {
               element={<ReviewPage />}
             />
             <Route path={appRoutes.games} element={<Games />} />
+            <Route path="/register" element={<SignIn />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/review-details" element={<ReviewPage />} />
             <Route path="/my-profile/:userId" element={<MyProfile />} />
           </Routes>

@@ -1,7 +1,42 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRegister, selectIsAuth } from "../../redux/slicers/auth";
 import "./SignIn.scss";
 
 function SignIn({ active, setActive }) {
+  const isAuth = useSelector(selectIsAuth);
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    defaultValues: {
+      name: "Lilo",
+      email: "lilo@test.com",
+      password: "baking",
+    },
+    mode: "onChange",
+  });
+
+  const onSubmit = async (values) => {
+    const data = await dispatch(fetchRegister(values));
+
+    if (!data.payload) {
+      alert("Failed to sign in");
+    }
+
+    if ("token" in data.payload) {
+      window.localStorage.setItem("token", data.payload.token);
+    }
+  };
+
+  if (isAuth) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <>
       <div
@@ -20,26 +55,54 @@ function SignIn({ active, setActive }) {
           <div class=" box-2 d-flex flex-column h-100">
             <div>
               <p class="h-1">Create Account</p>
-              <div class="d-flex flex-column align-items-center">
-                <div class="form-group">
-                  <label for="exampleDropdownFormEmail2"></label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleDropdownFormEmail2"
-                    placeholder="Email"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleDropdownFormPassword2"></label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="exampleDropdownFormPassword2"
-                    placeholder="Password"
-                  />
-                </div>
-                <p class="text-muted mb-2 mt-2">or Continue with...</p>
+
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div class="d-flex flex-column align-items-center">
+                  <div class="form-group">
+                    <label for="RegisterFormName"></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="RegisterFormName"
+                      placeholder="Name"
+                      error={Boolean(errors.name?.message)}
+                      style={{
+                        borderColor: errors.name && "red",
+                      }}
+                      {...register("name", { required: "Enter your name" })}
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="RegisterFormEmail"></label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="RegisterFormEmail"
+                      placeholder="Email"
+                      error={Boolean(errors.email?.message)}
+                      style={{
+                        borderColor: errors.email && "red",
+                      }}
+                      {...register("email", { required: "Enter your email" })}
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="RegisterFormPassword"></label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="RegisterFormPassword"
+                      placeholder="Password"
+                      error={Boolean(errors.password?.message)}
+                      style={{
+                        borderColor: errors.password && "red",
+                      }}
+                      {...register("password", {
+                        required: "Enter your password",
+                      })}
+                    />
+                  </div>
+                  {/* <p class="text-muted mb-2 mt-2">or Continue with...</p>
                 <div class="d-flex align-items-center mt-2 mb-4 socials">
                   <button type="button" class="btn btn-outline-primary">
                     <svg
@@ -77,14 +140,19 @@ function SignIn({ active, setActive }) {
                       <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
                     </svg>
                   </button>
+                </div> */}
+                  <div>
+                    {/* <p class="text-muted mt-3">Already have an account?</p> */}
+                    <button
+                      disabled={!isValid}
+                      type="submit"
+                      class="btn btn-dark mt-5"
+                    >
+                      Sign in<span class="fas fa-chevron-right"></span>
+                    </button>
+                  </div>
                 </div>
-                <div>
-                  <p class="text-muted">Already have an account?</p>
-                  <button class="btn btn-dark" onClick={() => setActive(false)}>
-                    Log in<span class="fas fa-chevron-right"></span>
-                  </button>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
           <span class="fas fa-times" onClick={() => setActive(false)}></span>

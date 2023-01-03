@@ -84,11 +84,19 @@ function MovieReviewCard(props) {
                   </svg>
                   {props.likes}
                 </button>
-                <Link to="/review-details">
-                  <button type="button" class="btn btn-dark">
-                    Read more
-                  </button>
-                </Link>
+                {data.map(
+                  (obj) =>
+                    obj.productTitle === props.productTitle && (
+                      <Link
+                        key={obj.reviewId}
+                        to={`/review-details/${obj.reviewTitle}/${obj.reviewId}`}
+                      >
+                        <button type="button" class="btn btn-dark">
+                          Read review
+                        </button>
+                      </Link>
+                    )
+                )}
               </div>
               <ul class="postcard__tagbox">
                 {props.tags.map((tag) => (

@@ -5,13 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { filters, appRoutes } from "../../const.js";
 import { changeCategory } from "../../redux/slicers/filterCategorySlice";
 import SignIn from "../../pages/SignInPage/SignIn";
+import Login from "../../pages/LoginPage/Login";
 import SignOut from "../../pages/SignOutPage/SignOut";
 
 import "./Header.scss";
 import CreateReviewModal from "../CreateReviewModal/CreateReviewModal.jsx";
+import { logout, selectIsAuth } from "../../redux/slicers/auth.js";
 
 function Header(props) {
   const [activeSignIn, setSignInActive] = useState(false);
+  const [activeLogin, setLoginActive] = useState(false);
   const [activeSignOut, setSignOutActive] = useState(false);
   const [activeCreateReview, setCreateReviewActive] = useState(false);
 
@@ -23,7 +26,14 @@ function Header(props) {
     (state) => state.filterCategory.selectedCategory
   );
   const dispatch = useDispatch();
-  const isAuth = true;
+
+  const isAuth = useSelector(selectIsAuth);
+  const onClickLogout = () => {
+    if (window.confirm("Are you sure you want to sign out?")) {
+      dispatch(logout());
+      window.localStorage.removeItem("token");
+    }
+  };
 
   return (
     <div class="header-container">
@@ -98,16 +108,31 @@ function Header(props) {
           />
         </form>
         <div class="d-flex col-md-3 text-end justify-content-evenly">
-          {isAuth && (
-            <button
-              type="button"
-              class="btn btn-outline-warning signin-button"
-              onClick={() => {
-                setSignInActive(true);
-              }}
-            >
-              Sign in
-            </button>
+          {!isAuth && (
+            <>
+              <Link to="/register">
+                <button
+                  type="button"
+                  class="btn btn-outline-warning signin-button"
+                  onClick={() => {
+                    setSignInActive(true);
+                  }}
+                >
+                  Sign in
+                </button>
+              </Link>
+              <Link to="/login">
+                <button
+                  type="button"
+                  class="btn btn-outline-danger signin-button"
+                  onClick={() => {
+                    setLoginActive(true);
+                  }}
+                >
+                  Log in
+                </button>
+              </Link>
+            </>
           )}
           {isAuth && (
             <div class="btn-group btn-outline-warning">
@@ -194,7 +219,7 @@ function Header(props) {
             <button
               type="button"
               class="btn btn-outline-danger ml-5"
-              onClick={() => setSignOutActive(true)}
+              onClick={onClickLogout}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -219,6 +244,7 @@ function Header(props) {
         </div>
       </header>
       <SignIn active={activeSignIn} setActive={setSignInActive} />
+      <Login active={activeLogin} setActive={setLoginActive} />
       <SignOut active={activeSignOut} setActive={setSignOutActive} />
       <CreateReviewModal
         active={activeCreateReview}

@@ -98,11 +98,6 @@ function ReviewPage(props) {
                           </svg>
                           {obj.likes.length}
                         </button>
-                        <Link to="/review-details">
-                          <button type="button" class="btn btn-dark">
-                            Read more
-                          </button>
-                        </Link>
                       </div>
                       <ul class="postcard__tagbox">
                         {obj.tags.map((tag) => (
