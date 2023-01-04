@@ -25,9 +25,11 @@ function Header(props) {
   const selectedCategory = useSelector(
     (state) => state.filterCategory.selectedCategory
   );
+
   const dispatch = useDispatch();
 
   const isAuth = useSelector(selectIsAuth);
+
   const onClickLogout = () => {
     if (window.confirm("Are you sure you want to sign out?")) {
       dispatch(logout());
@@ -135,85 +137,106 @@ function Header(props) {
             </>
           )}
           {isAuth && (
-            <div class="btn-group btn-outline-warning">
-              <button
-                type="button"
-                class="btn btn-outline-warning dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                onClick={toggleMenu}
-              >
-                My Profile
-              </button>
-              {isMyProfileOpen && (
-                <ul
-                  class="dropdown-menu dropdown-menu-end show"
-                  style={{
-                    position: "absolute",
-                    inset: "0px 0px auto auto",
-                    margin: "0px",
-                    transform: "translate(0px, 40px)",
-                    backgroundColor: "#000000",
-                    border: "1px solid #212529",
-                    borderRadius: "10%",
-                  }}
-                  data-popper-placement="bottom-end"
+            <>
+              <p class="text-white d-flex ">
+                Name{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="#ffffff"
+                  class="bi bi-person-circle"
+                  viewBox="0 0 16 16"
                 >
-                  <li>
-                    <button class="dropdown-item text-warning" href="/">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        class="bi bi-view-list"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"></path>
-                      </svg>{" "}
-                      My reviews
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      class="dropdown-item text-warning"
-                      onClick={() => setCreateReviewActive(true)}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        class="bi bi-pencil-square"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
-                        <path
-                          fill-rule="evenodd"
-                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                        ></path>
-                      </svg>
-                      Create new review
-                    </button>
-                  </li>
-                  <li>
-                    <button class="dropdown-item text-warning" href="/">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        class="bi bi-toggles"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M4.5 9a3.5 3.5 0 1 0 0 7h7a3.5 3.5 0 1 0 0-7h-7zm7 6a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm-7-14a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm2.45 0A3.49 3.49 0 0 1 8 3.5 3.49 3.49 0 0 1 6.95 6h4.55a2.5 2.5 0 0 0 0-5H6.95zM4.5 0h7a3.5 3.5 0 1 1 0 7h-7a3.5 3.5 0 1 1 0-7z"></path>
-                      </svg>
-                      Settings
-                    </button>
-                  </li>
-                </ul>
-              )}
-            </div>
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+                  <path
+                    fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                  ></path>
+                </svg>
+              </p>
+              <div class="btn-group btn-outline-warning">
+                <button
+                  type="button"
+                  class="btn btn-outline-warning dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  onClick={toggleMenu}
+                >
+                  My Profile
+                </button>
+                {isMyProfileOpen && (
+                  <ul
+                    class="dropdown-menu dropdown-menu-end show"
+                    style={{
+                      position: "absolute",
+                      inset: "0px 0px auto auto",
+                      margin: "0px",
+                      transform: "translate(0px, 40px)",
+                      backgroundColor: "#000000",
+                      border: "1px solid #212529",
+                      borderRadius: "10%",
+                    }}
+                    data-popper-placement="bottom-end"
+                  >
+                    <li>
+                      <button class="dropdown-item text-warning" href="/">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-view-list"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"></path>
+                        </svg>{" "}
+                        My reviews
+                      </button>
+                    </li>
+                    <li>
+                      <Link to="/add-review">
+                        <button
+                          class="dropdown-item text-warning"
+                          onClick={() => setCreateReviewActive(true)}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-pencil-square"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                            <path
+                              fill-rule="evenodd"
+                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                            ></path>
+                          </svg>
+                          Create new review
+                        </button>
+                      </Link>
+                    </li>
+                    <li>
+                      <button class="dropdown-item text-warning" href="/">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-toggles"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M4.5 9a3.5 3.5 0 1 0 0 7h7a3.5 3.5 0 1 0 0-7h-7zm7 6a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm-7-14a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm2.45 0A3.49 3.49 0 0 1 8 3.5 3.49 3.49 0 0 1 6.95 6h4.55a2.5 2.5 0 0 0 0-5H6.95zM4.5 0h7a3.5 3.5 0 1 1 0 7h-7a3.5 3.5 0 1 1 0-7z"></path>
+                        </svg>
+                        Settings
+                      </button>
+                    </li>
+                  </ul>
+                )}
+              </div>
+            </>
           )}
           {isAuth && (
             <button

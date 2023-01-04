@@ -1,8 +1,20 @@
 import React from "react";
 import "./CreateReviewModal.scss";
 import { filters } from "../../const";
+import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector, useState } from "react-redux";
+import { selectIsAuth } from "../../redux/slicers/auth";
+
+import axios from "../../axios";
 
 function CreateReviewModal({ active, setActive }) {
+  const dispatch = useDispatch();
+  const isAuth = useSelector(selectIsAuth);
+
+  const onSubmit = async () => {};
+  if (!window.localStorage.getItem("token") && !isAuth) {
+    return <Navigate to="/" />;
+  }
   return (
     <>
       <div
@@ -13,7 +25,6 @@ function CreateReviewModal({ active, setActive }) {
           <article class="postcard dark blue my-0 mx-0">
             <div class="postcard__text">
               <h2 class="postcard__title">Write new review</h2>
-
               <div class="review-content mt-3">
                 <div class=" category input-group mb-3 ">
                   <label
@@ -144,8 +155,8 @@ function CreateReviewModal({ active, setActive }) {
                 <input
                   class="btn btn-warning btn-lg "
                   type="submit"
-                  value="Post review  "
-                  onClick={() => setActive(false)}
+                  value="Post review"
+                  onClick={onSubmit}
                 ></input>
               </div>
             </div>

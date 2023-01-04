@@ -16,15 +16,15 @@ import { appRoutes } from "./const";
 import SignIn from "./pages/SignInPage/SignIn";
 import Login from "./pages/LoginPage/Login";
 
-import { fetchAuthMe, selectIsAuth } from "./redux/slicers/auth";
+import { fetchAuthMe } from "./redux/slicers/auth";
 
 function App() {
   const dispatch = useDispatch();
-  const isAuth = useSelector(selectIsAuth);
+  const { reviews } = useSelector((state) => state.reviews);
 
   React.useEffect(() => {
     dispatch(fetchAuthMe());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="body">
@@ -36,10 +36,12 @@ function App() {
             <Route path={appRoutes.allReviews} element={<AllReviews />} />
             <Route path={appRoutes.movies} element={<Movies />} />
             <Route path={appRoutes.books} element={<Books />} />
-            <Route
-              path="/review-details/:reviewTitle/:reviewId"
-              element={<ReviewPage />}
-            />
+            {reviews.items.map((obj) => (
+              <Route
+                path={`/review-details/${obj._id}`}
+                element={<ReviewPage />}
+              />
+            ))}
             <Route path={appRoutes.games} element={<Games />} />
             <Route path="/register" element={<SignIn />} />
             <Route path="/login" element={<Login />} />

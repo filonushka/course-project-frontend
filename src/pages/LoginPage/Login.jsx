@@ -34,7 +34,7 @@ function Login({ active, setActive }) {
   };
 
   if (isAuth) {
-    return <Navigate to="/" />;
+    // return <Navigate to="/" />;
   }
 
   return (

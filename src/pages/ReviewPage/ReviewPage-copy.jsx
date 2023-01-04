@@ -14,11 +14,8 @@ import EmptyStar from "../../components/GradeStars/EmptyStar";
 import FilledStar from "../../components/GradeStars/FilledStar";
 import HalfFilledStar from "../../components/GradeStars/HalfFilledStar";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchOneReview } from "../../redux/slicers/fullReview";
-import { fetchReviews } from "../../redux/slicers/reviews";
 
 import dayjs from "dayjs";
-
 function changeDateFormat(date) {
   const today = date;
   let options = {
@@ -33,23 +30,21 @@ function changeDateFormat(date) {
 }
 
 function ReviewPage(props) {
-  const dispatch = useDispatch();
-  const { reviews } = useSelector((state) => state.reviews);
-
-  // const isReviewLoading = fullReview.status === "loading";
-
-  const { id } = useParams;
+  const { reviewTitle, reviewId } = useParams();
   const [isShowMoreBtnOpen, setIsShowMoreBtnOpen] = useState(false);
   const [activeWriteComment, setWriteCommentActive] = useState(false);
   const toggleShowMoreBtn = () =>
     setIsShowMoreBtnOpen((isShowMoreBtnOpen) => !isShowMoreBtnOpen);
+
+  const { reviews } = useSelector((state) => state.reviews);
+  console.log(reviews.items, "items");
 
   return (
     <>
       <section class="dark">
         {reviews.items.map(
           (obj) =>
-            obj._id && (
+            obj._id === reviewId && (
               <div class="container py-4">
                 <article class="postcard dark blue">
                   <>
@@ -71,7 +66,7 @@ function ReviewPage(props) {
                         {obj.reviewContent}
                       </div>
                       <p>
-                        Author: <b>{obj.user.name}</b>
+                        Author: <b>{obj.author}</b>
                       </p>
                       {/* <div>
                         {drawFilledStar(getCountGrade(obj.grades)).map((el) => (
@@ -104,17 +99,17 @@ function ReviewPage(props) {
                               fill-rule="evenodd"
                               d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                             />
-                          </svg>{" "}
+                          </svg>
                           {obj.likes.length}
                         </button>
                       </div>
                       <ul class="postcard__tagbox">
-                        {obj.tags.map((tag) => (
+                        {/* {obj.tags.map((tag) => (
                           <li class="tag__item">
                             <i class="fas fa-tag mr-2"></i>
                             {tag}
                           </li>
-                        ))}
+                        ))} */}
                       </ul>
                     </div>
                   </>
@@ -123,11 +118,10 @@ function ReviewPage(props) {
             )
         )}
       </section>
-
       <section class="dark">
         {data.map(
           (obj) =>
-            obj.reviewId && (
+            obj.reviewId === reviewId && (
               <div class="container py-4">
                 <article class="postcard dark blue">
                   <>
@@ -176,7 +170,6 @@ function ReviewPage(props) {
             )
         )}
       </section>
-
       <section>
         <div class="container py-4 d-flex justify-content-between flex-end">
           {!isShowMoreBtnOpen ? (

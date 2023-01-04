@@ -33,7 +33,7 @@ function SignIn({ active, setActive }) {
     }
   };
 
-  if (isAuth) {
+  if (!window.localStorage.getItem("token") && !isAuth) {
     return <Navigate to="/" />;
   }
 

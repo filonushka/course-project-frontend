@@ -353,7 +353,7 @@ export const mockData = [
   {
     reviewId: "71unhcddk9i0",
     author: "Wild gamer",
-    productTitle: " Sonic Frontiers",
+    productTitle: "Sonic Frontiers",
     category: filters.games,
     reviewTitle: "wild, weird and a bit broken",
     reviewImageUrl:
