@@ -44,7 +44,6 @@ function AllReviews() {
                         reviewExtract=""
                         rating=""
                         likes=""
-                        tags=""
                         grades=""
                       />
                     </li>

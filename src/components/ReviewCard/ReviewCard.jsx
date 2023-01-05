@@ -59,7 +59,6 @@ function ReviewCard(props) {
               <p>
                 Author: <b>{props.author}</b>
               </p>
-
               {/* <div>
 
                 {drawFilledStar(getCountGrade(props.grades)).map((el) => (
@@ -105,16 +104,7 @@ function ReviewCard(props) {
                 )}
               </div>
               <ul class="postcard__tagbox">
-                {/* {reviews.items.map((tags) =>
-                  tags.map((tag) => (
-                    <li class="tag__item">
-                      <i class="fas fa-tag mr-2"></i>
-                      {tag}
-                    </li>
-                  ))
-                )} */}
-
-                {["0", "1", "2"].map((tag) => (
+                {[...props.tags].map((tag) => (
                   <li class="tag__item">
                     <i class="fas fa-tag mr-2"></i>
                     {tag}
