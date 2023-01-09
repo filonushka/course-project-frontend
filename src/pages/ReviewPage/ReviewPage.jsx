@@ -7,8 +7,8 @@ import CommentsBlock from "../../components/commentsBlock/CommentsBlock";
 function ReviewPage(props) {
   return (
     <>
-      <FullReviewCard />
-      <CommentsBlock />
+      <FullReviewCard key={Math.random()} />
+      <CommentsBlock key={Math.random()} />
     </>
   );
 }

@@ -10,9 +10,7 @@ import CardLoader from "../components/cardLoader/CardLoader";
 function Home() {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.auth.data);
-  // const { reviews } = useSelector((state) => state.reviews);
   const reviews = useSelector((state) => state.reviews.reviews);
-  console.log(reviews);
 
   const isReviewsLoading = reviews.status === "loading";
 

@@ -15,12 +15,13 @@ function StarGrade({ allGrades }) {
   return (
     <div class="mb-3">
       {drawFilledStar(avgGrade).map((el) => (
-        <FilledStar />
+        <FilledStar key={Math.random()} />
       ))}
       {drawHalfFilledStar(avgGrade).map((el) => (
-        <HalfFilledStar />
+        <HalfFilledStar key={Math.random()} />
       ))}
-      {avgGrade >= 4.3 || drawEmptyStar(avgGrade).map((el) => <EmptyStar />)}
+      {avgGrade >= 4.3 ||
+        drawEmptyStar(avgGrade).map((el) => <EmptyStar key={Math.random()} />)}
     </div>
   );
 }

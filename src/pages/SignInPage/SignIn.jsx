@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRegister, selectIsAuth } from "../../redux/slicers/auth";
 import "./SignIn.scss";
@@ -14,9 +14,9 @@ function SignIn({ active, setActive }) {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      name: "Lilo",
-      email: "lilo@test.com",
-      password: "baking",
+      name: "Test",
+      email: "test@test.com",
+      password: "testapp",
     },
     mode: "onChange",
   });
@@ -34,7 +34,7 @@ function SignIn({ active, setActive }) {
   };
 
   if (!window.localStorage.getItem("token") && !isAuth) {
-    return <Navigate to="/" />;
+    // return <Navigate to="/" />;
   }
 
   return (
@@ -77,7 +77,7 @@ function SignIn({ active, setActive }) {
                     <input
                       type="email"
                       class="form-control"
-                      id="RegisterFormEmail"
+                      id="emailId"
                       placeholder="Email"
                       error={Boolean(errors.email?.message)}
                       style={{
@@ -102,6 +102,7 @@ function SignIn({ active, setActive }) {
                       })}
                     />
                   </div>
+                  {/* register with socials */}
                   {/* <p class="text-muted mb-2 mt-2">or Continue with...</p>
                 <div class="d-flex align-items-center mt-2 mb-4 socials">
                   <button type="button" class="btn btn-outline-primary">

@@ -7,7 +7,6 @@ import "./ReviewCard.scss";
 
 function ReviewCard(props) {
   const tags = Array.from(props.tags);
-  console.log(props);
 
   return (
     <>

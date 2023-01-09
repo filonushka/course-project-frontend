@@ -1,16 +1,8 @@
 import React from "react";
-import { useState } from "react";
 import "./EditReviewModal.scss";
 import { filters } from "../../const";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsAuth } from "../../redux/slicers/auth";
-
-import axios from "../../axios";
 
 function EditReviewModal({ active, setActive }) {
-  const dispatch = useDispatch();
-  const isAuth = useSelector(selectIsAuth);
-
   const onSubmit = async () => {};
 
   return (

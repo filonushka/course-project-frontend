@@ -1,14 +1,13 @@
 import React from "react";
 import "./CreateReviewModal.scss";
 import { filters } from "../../const";
-import { useDispatch, useSelector, useState } from "react-redux";
+import { useDispatch } from "react-redux";
 import { selectIsAuth } from "../../redux/slicers/auth";
 
 import axios from "../../axios";
 
 function CreateReviewModal({ active, setActive }) {
   const dispatch = useDispatch();
-  const isAuth = useSelector(selectIsAuth);
 
   const onSubmit = async () => {};
 

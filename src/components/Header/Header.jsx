@@ -169,7 +169,7 @@ function Header(props) {
                       </button>
                     </li>
                     <li>
-                      <Link to="/add-review" class="text-decoration-none">
+                      <Link to="/" class="text-decoration-none">
                         <button
                           class="dropdown-item text-warning"
                           onClick={() => {

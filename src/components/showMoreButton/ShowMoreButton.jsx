@@ -1,8 +1,6 @@
 import React from "react";
-import { useState } from "react";
 
 function ShowMoreButton(active, setActive) {
-  // const [isShowMoreBtnOpen, setIsShowMoreBtnOpen] = useState(false);
   const toggleShowMoreBtn = () => setActive((active) => !active);
 
   return (
