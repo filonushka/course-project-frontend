@@ -8,7 +8,7 @@ import Movies from "./pages/Movies";
 import Books from "./pages/Books";
 import Games from "./pages/Games";
 import Home from "./pages/Home";
-import ReviewPage from "./pages/reviewPage/ReviewPage";
+import ReviewPage from "./pages/reviewPage/reviewPage";
 import MyProfile from "./pages/myProfilePage/MyProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignIn from "./pages/signInPage/SignIn";
