@@ -33,9 +33,9 @@ function Login({ active, setActive }) {
     }
   };
 
-  if (isAuth) {
-    // return <Navigate to="/" />;
-  }
+  // if (!window.localStorage.getItem("token") && !isAuth) {
+  //   return <Navigate to="/" />;
+  // }
 
   return (
     <>
@@ -93,6 +93,7 @@ function Login({ active, setActive }) {
                     <button
                       disabled={!isValid}
                       type="submit"
+                      onClick={() => setActive(false)}
                       class="btn btn-dark mt-5"
                     >
                       Log in<span class="fas fa-chevron-right"></span>

@@ -4,7 +4,7 @@ import axios from "../../axios";
 export const fetchReviews = createAsyncThunk(
   "reviews/fetchReviews",
   async () => {
-    const { data } = await axios.get("/reviews");
+    const { data } = await axios.get("/api/reviews/get-all-reviews");
     return data;
   }
 );

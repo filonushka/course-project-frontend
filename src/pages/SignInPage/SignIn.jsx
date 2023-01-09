@@ -142,7 +142,6 @@ function SignIn({ active, setActive }) {
                   </button>
                 </div> */}
                   <div>
-                    {/* <p class="text-muted mt-3">Already have an account?</p> */}
                     <button
                       disabled={!isValid}
                       type="submit"

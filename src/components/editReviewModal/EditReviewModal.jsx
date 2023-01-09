@@ -1,12 +1,13 @@
 import React from "react";
-import "./CreateReviewModal.scss";
+import { useState } from "react";
+import "./EditReviewModal.scss";
 import { filters } from "../../const";
-import { useDispatch, useSelector, useState } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectIsAuth } from "../../redux/slicers/auth";
 
 import axios from "../../axios";
 
-function CreateReviewModal({ active, setActive }) {
+function EditReviewModal({ active, setActive }) {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
 
@@ -21,7 +22,7 @@ function CreateReviewModal({ active, setActive }) {
         <section class="new-review-body" onClick={(e) => e.stopPropagation()}>
           <article class="postcard dark blue my-0 mx-0">
             <div class="postcard__text">
-              <h2 class="postcard__title">Write new review</h2>
+              <h2 class="postcard__title">Edit the review</h2>
               <div class="review-content mt-3">
                 <div class=" category input-group mb-3 ">
                   <label
@@ -152,7 +153,7 @@ function CreateReviewModal({ active, setActive }) {
                 <input
                   class="btn btn-warning btn-lg "
                   type="submit"
-                  value="Post review"
+                  value="Save changes"
                   onClick={onSubmit}
                 ></input>
               </div>
@@ -164,4 +165,4 @@ function CreateReviewModal({ active, setActive }) {
   );
 }
 
-export default CreateReviewModal;
+export default EditReviewModal;

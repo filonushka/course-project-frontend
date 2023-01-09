@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { filters, appRoutes } from "../../const.js";
 import { changeCategory } from "../../redux/slicers/filterCategorySlice";
-import SignIn from "../../pages/SignInPage/SignIn";
-import Login from "../../pages/LoginPage/Login";
-import SignOut from "../../pages/SignOutPage/SignOut";
+import SignIn from "../../pages/signInPage/SignIn";
+import Login from "../../pages/loginPage/Login";
+import SignOut from "../../pages/signOutPage/SignOut";
 
 import "./Header.scss";
-import CreateReviewModal from "../CreateReviewModal/CreateReviewModal.jsx";
+import CreateReviewModal from "../createReviewModal/CreateReviewModal.jsx";
 import { logout, selectIsAuth } from "../../redux/slicers/auth.js";
 
 function Header(props) {
@@ -48,19 +48,6 @@ function Header(props) {
           <h4 class="logo">REVIEW HUNTER</h4>
         </Link>
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li>
-            <Link
-              to={appRoutes.allReviews}
-              onClick={() => dispatch(changeCategory(filters.allReviews))}
-              className={
-                selectedCategory === filters.allReviews
-                  ? "nav-link px-2 text-warning"
-                  : "nav-link px-2 text-light"
-              }
-            >
-              {filters.allReviews}
-            </Link>
-          </li>
           <li>
             <Link
               to={appRoutes.movies}
@@ -109,7 +96,7 @@ function Header(props) {
             aria-label="Search"
           />
         </form>
-        <div class="d-flex col-md-3 text-end justify-content-evenly">
+        <div class="d-flex col-md-3 text-end justify-content-evenly gap-2">
           {!isAuth && (
             <>
               <Link to="/register">
@@ -123,7 +110,7 @@ function Header(props) {
                   Sign in
                 </button>
               </Link>
-              <Link to="/login">
+              <Link to="/">
                 <button
                   type="button"
                   class="btn btn-outline-danger signin-button"
@@ -138,23 +125,6 @@ function Header(props) {
           )}
           {isAuth && (
             <>
-              <p class="text-white d-flex ">
-                Name{" "}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  fill="#ffffff"
-                  class="bi bi-person-circle"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
-                  <path
-                    fill-rule="evenodd"
-                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                  ></path>
-                </svg>
-              </p>
               <div class="btn-group btn-outline-warning">
                 <button
                   type="button"
@@ -180,7 +150,11 @@ function Header(props) {
                     data-popper-placement="bottom-end"
                   >
                     <li>
-                      <button class="dropdown-item text-warning" href="/">
+                      <button
+                        class="dropdown-item text-warning"
+                        href="/"
+                        onClick={() => setIsMyProfileOpen(false)}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -195,10 +169,13 @@ function Header(props) {
                       </button>
                     </li>
                     <li>
-                      <Link to="/add-review">
+                      <Link to="/add-review" class="text-decoration-none">
                         <button
                           class="dropdown-item text-warning"
-                          onClick={() => setCreateReviewActive(true)}
+                          onClick={() => {
+                            setCreateReviewActive(true);
+                            setIsMyProfileOpen(false);
+                          }}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -213,25 +190,10 @@ function Header(props) {
                               fill-rule="evenodd"
                               d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                             ></path>
-                          </svg>
+                          </svg>{" "}
                           Create new review
                         </button>
                       </Link>
-                    </li>
-                    <li>
-                      <button class="dropdown-item text-warning" href="/">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          class="bi bi-toggles"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="M4.5 9a3.5 3.5 0 1 0 0 7h7a3.5 3.5 0 1 0 0-7h-7zm7 6a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm-7-14a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm2.45 0A3.49 3.49 0 0 1 8 3.5 3.49 3.49 0 0 1 6.95 6h4.55a2.5 2.5 0 0 0 0-5H6.95zM4.5 0h7a3.5 3.5 0 1 1 0 7h-7a3.5 3.5 0 1 1 0-7z"></path>
-                        </svg>
-                        Settings
-                      </button>
                     </li>
                   </ul>
                 )}

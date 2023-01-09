@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { appRoutes, filters } from "../../const";
+import { useDispatch } from "react-redux";
+import { changeCategory } from "../../redux/slicers/filterCategorySlice";
 
 function Footer() {
+  const dispatch = useDispatch();
+
   return (
     <div>
       <footer class="d-flex flex-wrap justify-content-between align-items-center  border-top p-4">
@@ -21,10 +25,12 @@ function Footer() {
         </div>
         <Link
           to={appRoutes.home}
+          onClick={() => dispatch(changeCategory(filters.allReviews))}
           class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
         >
           <h6 class="logo">REVIEW HUNTER</h6>
         </Link>
+
         <div class="mb-0 text-muted d-flex gap-3">
           <a
             href="https://www.linkedin.com/in/valeriya-filonova-89b89712b/"

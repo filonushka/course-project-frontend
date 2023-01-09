@@ -1,11 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
 
-export const fetchOneReview = createAsyncThunk(
+const initialState = {
+  fullReview: {
+    _id: "",
+  },
+  isLoading: false,
+  status: null,
+};
+
+export const fetchFullReview = createAsyncThunk(
   "reviews/fetcOnehReview",
   async ({ _id }) => {
     try {
-      const { data } = await axios.get("/reviews/", {
+      const { data } = await axios.get("/review-details/", {
         _id,
       });
       return data;
@@ -15,30 +23,22 @@ export const fetchOneReview = createAsyncThunk(
   }
 );
 
-const initialState = {
-  fullReview: {
-    _id: "",
-  },
-  isLoading: false,
-  status: null,
-};
-
-const fullReviewSlice = createSlice({
-  name: "reviews",
+export const fullReviewSlice = createSlice({
+  name: "review",
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchOneReview.pending]: (state) => {
-      state.status = "loading";
-      state.isLoading = "true";
+    [fetchFullReview.pending]: (state) => {
+      state.reviews.status = "loading";
+      state.reviews.items = [];
     },
-    [fetchOneReview.fulfilled]: (state, action) => {
-      state.status = "loaded";
-      state.isLoading = action.payload;
+    [fetchFullReview.fulfilled]: (state, action) => {
+      state.reviews.status = "loaded";
+      state.reviews.items = action.payload;
     },
-    [fetchOneReview.rejected]: (state) => {
-      state.status = "error";
-      state.isLoading = null;
+    [fetchFullReview.rejected]: (state) => {
+      state.reviews.status = "error";
+      state.reviews.items = [];
     },
   },
 });
